@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Little Love Story ♡</title>
+<meta name="theme-color" content="#f7e9e5">
+<meta name="description" content="A little collection of memories, notes, and wishes made with love.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Patrick+Hand&family=Quicksand:wght@500;600;700&display=swap');
+* { box-sizing: border-box; }
+body { margin:0; min-height:100vh; display:grid; place-items:center; padding:25px 14px; font-family:'Quicksand',sans-serif; background-color:#f8e5df;
+ background-image: repeating-linear-gradient(0deg, transparent 0 27px,#edb9c2 28px 34px, transparent 35px 57px), repeating-linear-gradient(90deg, transparent 0 27px,#edb9c2 28px 34px, transparent 35px 57px); background-size:58px 58px; }
+.browser { width:min(850px,100%); min-height:590px; background:#f7e8e1; border:1px solid #d5b7b1; border-radius:13px; box-shadow:0 18px 55px #74445238; overflow:hidden; }
+.bar { height:34px; background:#e5e2e5; border-bottom:1px solid #cbbfc3; display:flex; align-items:center; padding:0 12px; gap:6px; }
+.dot { width:9px; height:9px; border-radius:50%; background:#f28b9b; }
+.dot:nth-child(2){background:#f5c66e} .dot:nth-child(3){background:#88c99a}
+#stage { min-height:556px; display:grid; place-items:center; padding:36px 22px; position:relative; overflow:hidden; background:radial-gradient(ellipse at center,#fff8f0 0,#f8e9e3 68%,#f2d6d2 100%); }
+.heart-bg { position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:0; }
+.heart-bg span { position:absolute; bottom:-50px; color:#e88ca5; opacity:0; font-size:25px; text-shadow:0 2px 8px #b85b7840; animation:floatingHearts linear infinite; }
+@keyframes floatingHearts { 0%{transform:translateY(0) rotate(0) scale(.7);opacity:0} 15%{opacity:.55} 80%{opacity:.4} 100%{transform:translateY(-650px) rotate(35deg) scale(1.2);opacity:0} }
+.flower { position:absolute; right:7%; top:6%; font-size:65px; z-index:2; transform:rotate(12deg); }
+.sparkle { position:absolute; pointer-events:none; z-index:2; animation:sparkleFloat 6s ease-in-out infinite; }
+@keyframes sparkleFloat { 50%{transform:translateY(-15px) rotate(12deg)} }
+.paper { width:min(650px,100%); min-height:405px; padding:55px 42px 38px; position:relative; z-index:2; text-align:center; background:linear-gradient(135deg,#f8eee8,#f4e3dc); border:2px solid #fff9f3; border-radius:8px; box-shadow:0 9px 18px #81545a22, inset 0 0 25px #d9b7ae55; }
+.paper:after { content:""; position:absolute; inset:9px; border:1px solid #fff9f2; border-radius:8px; pointer-events:none; }
+.script { font-family:'Patrick Hand',cursive; color:#8a4b58; font-size:clamp(32px,5vw,49px); line-height:1.12; margin:0 auto 25px; }
+.sub { font-family:'DM Serif Display',serif; font-size:clamp(24px,4vw,36px); color:#673946; line-height:1.2; }
+.cute { font-size:68px; margin:16px auto 8px; filter:drop-shadow(0 4px 2px #d8aaa2); }
+.actions { display:flex; justify-content:center; gap:24px; align-items:center; flex-wrap:wrap; margin-top:20px; position:relative; z-index:3; }
+button { font:700 17px 'Quicksand',sans-serif; color:#56323d; background:#fff8f0; border:1.5px solid #714b52; border-radius:13px; padding:11px 28px; min-width:104px; box-shadow:0 4px 0 #c99b6d; cursor:pointer; transition:transform .18s, background .18s; }
+button:hover { transform:translateY(-2px); background:#fff; }
+button.primary { background:#f8dce0; }
+button.small { min-width:0; padding:8px 16px; font-size:14px; }
+.hidden { display:none !important; }
+.envelopes { display:grid; grid-template-columns:repeat(3,minmax(105px,1fr)); gap:22px 18px; max-width:490px; margin:24px auto 0; }
+.envelope { border:0; box-shadow:none; background:transparent; padding:0; min-width:0; display:flex; flex-direction:column; align-items:center; gap:5px; }
+.env { width:112px; height:82px; background:#741c48; clip-path:polygon(0 24%,50% 0,100% 24%,100% 100%,0 100%); position:relative; display:grid; place-items:end center; padding-bottom:10px; filter:drop-shadow(0 3px 1px #57203d55); transition:transform .2s; }
+.env:before { content:""; position:absolute; top:20px; left:0; width:100%; height:44px; background:#f7e8e1; clip-path:polygon(0 0,50% 55%,100% 0,100% 100%,0 100%); }
+.env:after { content:"♡"; position:absolute; top:32px; color:#8b3155; font-size:20px; }
+.env span { z-index:1; color:#642b43; background:#fff9f3; font:14px 'Patrick Hand',cursive; padding:1px 7px; }
+.envelope:hover .env { transform:translateY(-6px) rotate(-2deg); }
+.env-caption { font:15px 'Patrick Hand',cursive; color:#6e3047; }
+.letter { max-width:580px; width:100%; position:relative; z-index:2; text-align:left; background:#f5d9d3; padding:32px; box-shadow:0 8px 24px #8d4c5430; border:1px solid #fff5ed; }
+.letter p { font:clamp(19px,2.5vw,23px)/1.42 'DM Serif Display',serif; color:#57333b; margin-bottom:18px; text-align:center; }
+.sign { font:25px 'Patrick Hand',cursive; color:#914c60; text-align:right; }
+.letter-actions { display:flex; justify-content:center; margin-top:18px; }
+.progress { position:absolute; bottom:16px; left:0; right:0; text-align:center; font:13px 'Quicksand',sans-serif; color:#a27679; z-index:2; }
+.music-control { display:flex; justify-content:space-between; align-items:center; gap:10px; padding:11px 16px; background:linear-gradient(110deg,#f7e8e4,#ead1d4); border-bottom:1px solid #dec3c5; }
+.music-control .music-hint { color:#875766; font:14px 'Patrick Hand',cursive; }
+.music-control button { min-width:0; padding:8px 15px; font-size:13px; border-radius:22px; box-shadow:0 3px 0 #c99b6d; }
+.album-wrap { width:min(680px,100%); margin:18px auto 8px; }
+.album-heading { text-align:center; margin-bottom:18px; }
+.album-kicker { color:#a46e78; text-transform:uppercase; letter-spacing:3px; font:10px 'Quicksand',sans-serif; font-weight:700; }
+.album-title { color:#70404e; font:clamp(27px,5vw,40px) 'DM Serif Display',serif; margin:5px 0; }
+.album-subtitle { color:#966d73; font:16px 'Patrick Hand',cursive; margin:0; }
+.album-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:17px 14px; padding:15px 8px 20px; }
+.album-card { appearance:none; border:0; padding:9px 9px 28px; min-width:0; background:#fffdf8; box-shadow:0 7px 18px #68404b24, 0 1px 3px #68404b18; border-radius:3px; cursor:pointer; position:relative; transform:translateY(22px) rotate(var(--tilt,0deg)); opacity:0; animation:albumReveal .75s cubic-bezier(.2,.75,.25,1) forwards; animation-delay:var(--delay,0s); transition:transform .28s ease, box-shadow .28s ease; }
+.album-card:nth-child(3n+1){--tilt:-2deg} .album-card:nth-child(3n+2){--tilt:1.5deg} .album-card:nth-child(3n){--tilt:2deg}
+.album-card:hover { transform:translateY(-8px) rotate(0) scale(1.035); box-shadow:0 14px 25px #68404b35; z-index:2; }
+.album-card img { width:100%; aspect-ratio:4/5; display:block; object-fit:cover; object-position:center 25%; background:linear-gradient(135deg,#f4dfe0,#f8eee8); }
+.album-card .album-caption { position:absolute; bottom:7px; left:5px; right:5px; text-align:center; color:#80515c; font:14px 'Patrick Hand',cursive; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.album-card:after { content:""; position:absolute; width:65px; height:17px; top:-7px; left:calc(50% - 32px); background:#e7b9bb99; transform:rotate(-3deg); }
+@keyframes albumReveal { to { opacity:1; transform:translateY(0) rotate(var(--tilt,0deg)); } }
+.album-footer { text-align:center; color:#9a7078; font:15px 'Patrick Hand',cursive; margin:2px 0 12px; }
+.album-actions { display:flex; justify-content:center; gap:10px; flex-wrap:wrap; }
+.album-actions button { font-size:14px; padding:10px 17px; }
+.photo-viewer { position:fixed; inset:0; z-index:1000; display:none; place-items:center; padding:22px; background:#24151de8; backdrop-filter:blur(9px); }
+.photo-viewer.open { display:grid; animation:viewerFade .25s ease; }
+@keyframes viewerFade { from{opacity:0} to{opacity:1} }
+.viewer-frame { width:min(540px,94vw); max-height:90vh; position:relative; padding:13px 13px 45px; background:#fffaf4; border-radius:5px; box-shadow:0 25px 80px #0008; animation:viewerPop .35s cubic-bezier(.2,.8,.2,1); }
+@keyframes viewerPop { from{transform:translateY(22px) scale(.94);opacity:0} to{transform:translateY(0) scale(1);opacity:1} }
+.viewer-frame img { display:block; width:100%; max-height:72vh; object-fit:contain; background:#f4e6e3; }
+.viewer-caption { position:absolute; bottom:13px; left:12px; right:12px; text-align:center; color:#754654; font:18px 'Patrick Hand',cursive; }
+.viewer-close,.viewer-nav { position:absolute; z-index:2; min-width:0; width:39px; height:39px; padding:0; border:1px solid #fff; border-radius:50%; background:#fff8f0ef; color:#754654; box-shadow:0 3px 10px #0002; display:grid; place-items:center; }
+.viewer-close { top:-13px; right:-13px; font-size:22px; }
+.viewer-nav { top:50%; transform:translateY(-50%); font-size:23px; }
+.viewer-prev { left:-19px; } .viewer-next { right:-19px; }
+@media(max-width:540px) {
+ .music-control { padding:9px 10px; } .music-control .music-hint { font-size:12px; }
+ .album-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:15px 12px; }
+ .album-card { padding:7px 7px 25px; } .album-card .album-caption { font-size:13px; }
+ .viewer-prev { left:-12px; } .viewer-next { right:-12px; }
+ .paper { padding:48px 20px 30px; min-height:390px; } .flower { font-size:46px; }
+ .envelopes { grid-template-columns:repeat(2,minmax(100px,1fr)); gap:18px; } .env { width:105px; } #stage { padding:25px 14px; }
+}
+
+/* POLISHED LOVE-STORY ADDITIONS */
+:root{color-scheme:light}
+body{background-color:#f7e9e5;background-image:radial-gradient(circle at 15% 15%,#fff8f3 0 2px,transparent 3px),radial-gradient(circle at 85% 80%,#eabac5 0 2px,transparent 3px),linear-gradient(135deg,#f7e6e2,#f3d9df);background-size:48px 48px,64px 64px,auto}
+.browser{width:min(980px,100%);border-radius:18px;box-shadow:0 25px 80px #75465330}
+.bar{height:38px;padding-left:16px}
+#stage{min-height:620px;padding:clamp(24px,5vw,54px) 20px 58px;overflow-y:auto;scroll-behavior:smooth}
+.paper{width:min(720px,100%);padding:clamp(32px,5vw,58px) clamp(20px,5vw,48px);border-radius:12px;box-shadow:0 18px 45px #81545a20,inset 0 0 25px #d9b7ae40}
+.paper:after{inset:10px;border-radius:9px}
+.script{letter-spacing:.2px;text-wrap:balance}
+.sub{text-wrap:balance}
+button{border-radius:999px;box-shadow:0 4px 0 #d7a5ae;transition:transform .2s ease,box-shadow .2s ease,background .2s ease}
+button:focus-visible,.album-card:focus-visible{outline:3px solid #9b5269;outline-offset:4px}
+button:active{transform:translateY(1px);box-shadow:0 2px 0 #d7a5ae}
+.music-control{padding:12px 18px;background:linear-gradient(110deg,#fff6f1,#f0d9df)}
+.music-control button{box-shadow:0 3px 0 #d7a5ae}
+.album-grid{gap:20px 18px}
+.album-card{border-radius:5px}
+.album-card img{border-radius:2px}
+.progress{bottom:12px;letter-spacing:1px}
+.reason-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:24px auto;max-width:650px}
+.reason-card{min-height:145px;padding:18px 12px;border:1px solid #e9cbd0;border-radius:14px;background:linear-gradient(145deg,#fffaf5,#f6e2e2);box-shadow:0 7px 18px #80515c18;color:#70404e;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;font:16px 'Patrick Hand',cursive;min-width:0}
+.reason-card .reason-icon{font-size:30px}
+.reason-card .reason-copy{font:15px/1.4 'Quicksand',sans-serif;color:#805763}
+.reason-card.revealed{background:linear-gradient(145deg,#f8dfe3,#fff7ef);border-color:#dcaab6}
+.wish-row{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin:24px auto}
+.wish-star{width:64px;height:64px;min-width:64px;padding:0;background:#fff8f0;border:1px solid #e4c1c8;font-size:30px;box-shadow:0 5px 0 #d9aab4}
+.wish-message{min-height:62px;max-width:520px;margin:18px auto 0;padding:16px;border-radius:12px;background:#fff8f0aa;color:#70404e;font:20px 'Patrick Hand',cursive}
+.small-note{font:15px/1.6 'Quicksand',sans-serif;color:#946b74;max-width:520px;margin:10px auto}
+.final-heart{font-size:72px;animation:softBeat 1.8s ease-in-out infinite;filter:drop-shadow(0 5px 9px #d98da455)}
+@keyframes softBeat{50%{transform:scale(1.09)}}
+@media(max-width:620px){.reason-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.reason-card{min-height:132px;padding:14px 9px}.browser{border-radius:12px}.album-grid{gap:14px 11px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+
+/* PASSWORD GATE */
+body.locked { overflow:hidden; }
+#passwordGate { position:fixed; inset:0; z-index:9999; display:grid; place-items:center; padding:22px; background:radial-gradient(circle at top,#fff5f1,#f2cfd5 70%,#e8b9c5); }
+#passwordGate .gate-card { width:min(440px,100%); padding:38px 28px; text-align:center; border:1px solid #fff; border-radius:24px; background:#fffaf5ee; box-shadow:0 20px 70px #73364b35; }
+#passwordGate .gate-icon { font-size:54px; margin-bottom:8px; }
+#passwordGate h1 { font:clamp(32px,7vw,43px) 'DM Serif Display',serif; color:#743d50; margin:8px 0 10px; }
+#passwordGate p { color:#795765; line-height:1.6; margin:0 0 18px; }
+#sitePassword { width:100%; padding:14px 16px; border:1px solid #d9aeb9; border-radius:13px; background:white; color:#593544; font:600 16px 'Quicksand',sans-serif; text-align:center; outline:none; }
+#sitePassword:focus { border-color:#a64f70; box-shadow:0 0 0 3px #eab9ca66; }
+#passwordGate button { margin-top:14px; width:100%; }
+#passwordError { min-height:22px; margin-top:12px; color:#b33e61; font-size:13px; }
+#passwordGate .gate-hint { font-size:12px; opacity:.8; margin-top:12px; }
+.confession { font:clamp(22px,3vw,27px)/1.5 'DM Serif Display',serif; color:#70404e; margin:20px auto; max-width:520px; }
+.confession-question { font:clamp(26px,4vw,36px)/1.25 'DM Serif Display',serif; color:#8a405b; margin:14px auto; }
+.confession-response { min-height:30px; color:#8a405b; font:18px 'Patrick Hand',cursive; margin-top:16px; }
+@media(max-width:520px){ #passwordGate .gate-card{padding:30px 20px;} }
+
+</style>
+</head>
+<body class="locked">
+<div id="passwordGate" role="dialog" aria-modal="true" aria-labelledby="gateTitle">
+ <div class="gate-card">
+  <div class="gate-icon">💌</div>
+  <h1 id="gateTitle">A little secret...</h1>
+  <p>This little website is just for you.<br>Enter the secret password to open it ♡</p>
+  <form id="passwordForm" onsubmit="return unlockWebsite(event)">
+   <input id="sitePassword" type="password" placeholder="Enter the secret password" autocomplete="off" required aria-label="Secret password">
+   <button class="primary" type="submit">unlock my surprise ♡</button>
+  </form>
+  <div id="passwordError" aria-live="polite"></div>
+  <div class="gate-hint">Hint: it's a little secret only we know ✨</div>
+ </div>
+</div>
+<div class="browser">
+ <div class="bar"><i class="dot"></i><i class="dot"></i><i class="dot"></i></div>
+ <div class="music-control">
+  <span class="music-hint">a little soundtrack for your surprise ♡</span>
+  <button type="button" id="musicBtn" class="primary" onclick="toggleMusic()">♫ play music</button>
+ </div>
+ <audio id="bgMusic" src="music/your-song.mp3" loop preload="none"></audio>
+ <main id="stage">
+  <div class="heart-bg">
+   <span style="left:4%;animation-duration:13s;animation-delay:-3s">♡</span>
+   <span style="left:13%;animation-duration:17s;animation-delay:-11s">♥</span>
+   <span style="left:24%;animation-duration:15s;animation-delay:-6s">♡</span>
+   <span style="left:36%;animation-duration:19s;animation-delay:-14s">♥</span>
+   <span style="left:48%;animation-duration:14s;animation-delay:-8s">♡</span>
+   <span style="left:61%;animation-duration:18s;animation-delay:-2s">♥</span>
+   <span style="left:73%;animation-duration:16s;animation-delay:-12s">♡</span>
+   <span style="left:84%;animation-duration:20s;animation-delay:-5s">♥</span>
+   <span style="left:95%;animation-duration:15s;animation-delay:-9s">♡</span>
+  </div>
+  <div class="flower">🌸</div>
+  <span class="sparkle" style="left:8%;top:18%">♡</span>
+  <span class="sparkle" style="right:10%;bottom:17%">✧</span>
+
+  <section class="paper" id="intro">
+   <h1 class="script">I made<br>something for<br>you</h1>
+   <div class="cute">🐱</div>
+   <div class="actions"><button class="primary" onclick="show('question')">what?</button></div>
+  </section>
+
+  <section class="paper hidden" id="question">
+   <h1 class="script">Will you see it?</h1>
+   <div class="cute">🧸💐🐱</div>
+   <div class="actions">
+    <button class="primary" onclick="show('please')">yes 💗</button>
+    <button id="noBtn" onmouseenter="runAway()" ontouchstart="runAway()" onclick="runAway()">no 🙈</button>
+   </div>
+  </section>
+
+  <section class="paper hidden" id="please">
+   <h1 class="script">please say<br>yes!</h1>
+   <div class="cute">🐱</div>
+   <div class="actions"><button class="primary" onclick="show('surprise')">fine ♡</button></div>
+  </section>
+
+  <section class="paper hidden" id="surprise">
+   <div class="script">yay!</div>
+   <h2 class="sub">Are you ready for<br>the surprise?</h2>
+   <div class="cute">🧸🤍</div>
+   <div class="actions"><button class="primary" onclick="show('memories')">yes!!</button></div>
+  </section>
+
+  <section class="paper hidden" id="memories">
+   <div class="album-wrap">
+    <div class="album-heading">
+     <div class="album-kicker">a little book of you</div>
+     <h1 class="album-title">Your little photo album ♡</h1>
+     <p class="album-subtitle">A thousand tiny moments I wish I could keep forever.</p>
+    </div>
+    <div class="album-grid" id="albumGrid"></div>
+    <p class="album-footer">tap any picture to see it up close ✧</p>
+    <div class="album-actions"><button class="primary" onclick="show('reasons')">a few things I adore about you ✨</button></div>
+   </div>
+  </section>
+
+  <div class="photo-viewer" id="photoViewer" onclick="closePhotoViewer(event)">
+   <div class="viewer-frame">
+    <button class="viewer-close" type="button" aria-label="Close photo" onclick="closePhotoViewer()">×</button>
+    <button class="viewer-nav viewer-prev" type="button" aria-label="Previous photo" onclick="changePhoto(-1,event)">‹</button>
+    <img id="viewerImage" src="" alt="Selected album photo">
+    <div class="viewer-caption" id="viewerCaption"></div>
+    <button class="viewer-nav viewer-next" type="button" aria-label="Next photo" onclick="changePhoto(1,event)">›</button>
+   </div>
+  </div>
+
+  <section class="paper hidden" id="reasons">
+   <div class="album-kicker">little things, big feelings</div>
+   <h1 class="album-title">A few reasons you're special ♡</h1>
+   <p class="album-subtitle">Tap each little card. I hope these make you smile.</p>
+   <div class="reason-grid" id="reasonGrid">
+    <button class="reason-card" type="button" onclick="revealReason(this,0)"><span class="reason-icon">🌷</span><span>tap to open</span></button>
+    <button class="reason-card" type="button" onclick="revealReason(this,1)"><span class="reason-icon">✨</span><span>tap to open</span></button>
+    <button class="reason-card" type="button" onclick="revealReason(this,2)"><span class="reason-icon">😊</span><span>tap to open</span></button>
+    <button class="reason-card" type="button" onclick="revealReason(this,3)"><span class="reason-icon">🫶</span><span>tap to open</span></button>
+    <button class="reason-card" type="button" onclick="revealReason(this,4)"><span class="reason-icon">🦋</span><span>tap to open</span></button>
+    <button class="reason-card" type="button" onclick="revealReason(this,5)"><span class="reason-icon">💗</span><span>tap to open</span></button>
+   </div>
+   <p class="small-note">The best reason is simply that you're you. These are just a few ways to say it.</p>
+   <div class="album-actions"><button class="primary" onclick="show('envelopes')">open your letters 💌</button></div>
+  </section>
+
+  <section class="paper hidden" id="envelopes">
+   <h1 class="script">A few little letters<br>for you ♡</h1>
+   <p style="font:17px 'Patrick Hand'">Open them whenever you need a smile.</p>
+   <div class="envelopes">
+    <button class="envelope" onclick="letter(0)"><div class="env"><span>open me</span></div><span class="env-caption">when you miss me</span></button>
+    <button class="envelope" onclick="letter(1)"><div class="env"><span>open me</span></div><span class="env-caption">when you're sad</span></button>
+    <button class="envelope" onclick="letter(2)"><div class="env"><span>open me</span></div><span class="env-caption">when you're happy</span></button>
+    <button class="envelope" onclick="letter(3)"><div class="env"><span>open me</span></div><span class="env-caption">when we argue</span></button>
+    <button class="envelope" onclick="letter(4)"><div class="env"><span>open me</span></div><span class="env-caption">just because</span></button>
+   </div>
+   <div class="actions"><button class="small primary" onclick="show('wishes')">pick a little star ✨</button></div>
+  </section>
+
+  <section class="letter hidden" id="letter">
+   <p id="letterText"></p>
+   <div class="sign">Always yours ♡</div>
+   <div class="letter-actions"><button class="small primary" onclick="show('envelopes')">← back to letters</button></div>
+  </section>
+
+  <section class="paper hidden" id="wishes">
+   <div class="album-kicker">a tiny wish for you</div>
+   <h1 class="album-title">Pick a little star ✨</h1>
+   <p class="album-subtitle">Each one is hiding a wish I have for you.</p>
+   <div class="wish-row">
+    <button class="wish-star" aria-label="Wish one" onclick="showWish(0)">✦</button>
+    <button class="wish-star" aria-label="Wish two" onclick="showWish(1)">✧</button>
+    <button class="wish-star" aria-label="Wish three" onclick="showWish(2)">✦</button>
+    <button class="wish-star" aria-label="Wish four" onclick="showWish(3)">✧</button>
+    <button class="wish-star" aria-label="Wish five" onclick="showWish(4)">✦</button>
+   </div>
+   <div class="wish-message" id="wishMessage" aria-live="polite">Your wish is waiting in a star ♡</div>
+   <div class="actions"><button class="primary" onclick="show('ending')">one last thing... ♡</button></div>
+  </section>
+
+  <section class="paper hidden" id="ending">
+   <div class="album-kicker">there's one thing I've been wanting to tell you</div>
+   <h1 class="script">One last thing...</h1>
+   <div class="final-heart">♡</div>
+   <p class="confession">Every photo, every little note, and every word here was my way of showing you how special you are to me.</p>
+   <h2 class="confession-question">I love you. ❤️</h2>
+   <p class="confession">I don't want to rush you or put any pressure on you. I just wanted to be honest about how I feel.</p>
+   <h2 class="sub">Would you like to give us a chance? ♡</h2>
+   <div class="actions">
+    <button class="primary" onclick="answerConfession('yes')">I'd love to 💗</button>
+   </div>
+   <div class="confession-response" id="confessionResponse" aria-live="polite"></div>
+   <div class="actions"><button class="small" onclick="show('intro')">read our story again ♡</button></div>
+  </section>
+
+  <div class="progress" id="progress"></div>
+ </main>
+</div>
+
+<script>
+const pages = ['intro','question','please','surprise','memories','reasons','envelopes','letter','wishes','ending'];
+
+
+// CHANGE THIS to a private password you choose before sharing the website.
+// This is a playful front-end gate, not strong security: the password can be found in the page source.
+const ACCESS_PASSWORD = 'oursecret';
+function unlockWebsite(event) {
+  if (event) event.preventDefault();
+  const field = document.getElementById('sitePassword');
+  const error = document.getElementById('passwordError');
+  if (field.value.trim() === ACCESS_PASSWORD) {
+    document.getElementById('passwordGate').classList.add('hidden');
+    document.body.classList.remove('locked');
+    show('intro');
+  } else {
+    error.textContent = 'That password is not quite right. Try again, sweetheart ♡';
+    field.value = '';
+    field.focus();
+  }
+  return false;
+}
+function answerConfession(answer) {
+  const response = document.getElementById('confessionResponse');
+  response.textContent = answer === 'yes'
+    ? 'You just made me the happiest person. Thank you for giving this a chance. ❤️'
+    : 'That is completely okay. Take all the time you need. I respect how you feel, and I am glad I could be honest with you. ♡';
+}
+
+function show(id) {
+  if (id === 'memories') buildAlbum();
+  pages.forEach(p => document.getElementById(p).classList.toggle('hidden', p !== id));
+  const labels = {intro:'a little surprise, made with love',question:'just one little question',please:'you said yes ♡',surprise:'the surprise is waiting',memories:'our little memory book',reasons:'little things I adore',envelopes:'♡ 5 little notes, made with love ♡',letter:'a note from my heart',wishes:'five little wishes for you',ending:'always, with love'};
+  document.getElementById('progress').textContent = labels[id] || '';
+  document.getElementById('stage').scrollTo({top:0,behavior:'smooth'});
+}
+
+function runAway() {
+  const btn = document.getElementById('noBtn');
+  const r = document.getElementById('question').getBoundingClientRect();
+  const maxX = r.width - btn.offsetWidth - 30;
+  const maxY = r.height - btn.offsetHeight - 30;
+  btn.style.position = 'absolute';
+  btn.style.left = Math.max(8, Math.random() * maxX) + 'px';
+  btn.style.top = Math.max(10, Math.random() * maxY) + 'px';
+}
+
+const notes = [
+ "Hey love, if you're reading this, I'm guessing you're missing me. I miss you too, probably more than you know. Close your eyes and imagine me holding your hand, making you laugh. Distance is temporary. What we have is precious. I'm always yours.",
+ "Hi baby. I hate the thought of you feeling low. Whatever happened, it doesn't define you. You're stronger, softer, and more beautiful than you realize. Take a breath, be kind to yourself, and remember that I'm cheering for you. You never have to face a hard day alone.",
+ "Your happiness is one of my favourite things. I hope today gives you a hundred reasons to smile. Keep that beautiful smile of yours close; it makes everything around you feel brighter. I'm so proud of you.",
+ "If we ever argue, take a breath. I never want us to be against each other. It's us versus the problem, always. I care about you more than my ego or being right. Let's talk, listen, fix it, and choose kindness again.",
+ "If you made it through these letters, I hope at least one made you smile. I wrote them for the days I can't be right next to you. Whenever you need a reminder, read one and remember: you are appreciated, cared for, and loved. Always ♡"
+];
+
+function letter(i) { document.getElementById('letterText').textContent = notes[i]; show('letter'); }
+
+const reasons = [
+ 'Your smile can make an ordinary day feel special.',
+ 'You have a way of making little moments memorable.',
+ 'I love how wonderfully you are simply yourself.',
+ 'You deserve kindness, patience, and every good thing.',
+ 'There is something lovely about the way you see the world.',
+ 'Even a small thought of you can make me smile.'
+];
+function revealReason(card, index) {
+  if (card.dataset.open === 'true') return;
+  card.dataset.open = 'true'; card.classList.add('revealed');
+  card.innerHTML = '<span class="reason-icon">💗</span><span class="reason-copy"></span>';
+  card.querySelector('.reason-copy').textContent = reasons[index];
+}
+const wishes = [
+ 'I hope you always find reasons to be proud of yourself.',
+ 'I hope your days are filled with calm, laughter, and lovely surprises.',
+ 'I hope you never forget how much you matter.',
+ 'I hope every dream you quietly carry gets a chance to bloom.',
+ 'I hope life is gentle with your heart, today and always.'
+];
+function showWish(index) {
+  document.getElementById('wishMessage').textContent = wishes[index];
+}
+
+/* PHOTO ALBUM - 12 photos embedded (edit captions below) */
+const albumPhotos = [{"src":"images/01.jpg","caption":"a little moment, a lovely memory ♡"},{"src":"images/02.jpg","caption":"moonlight looks good on you"},{"src":"images/03.jpg","caption":"your smile belongs in this album"},{"src":"images/04.jpg","caption":"timeless, just like you"},{"src":"images/05.jpg","caption":"one of my favourite memories"},{"src":"images/06.jpg","caption":"beautiful in every little way"},{"src":"images/07.jpg","caption":"this picture makes me smile"},{"src":"images/08.jpg","caption":"those eyes, though ♡"},{"src":"images/09.jpg","caption":"my little flower"},{"src":"images/10.jpg","caption":"red suits you so well"},{"src":"images/11.jpg","caption":"a moment worth keeping"},{"src":"images/12.jpg","caption":"forever a favourite ♡"}];
+
+let activePhotoIndex = 0;
+
+function buildAlbum() {
+  const grid = document.getElementById('albumGrid');
+  if (!grid || grid.dataset.built === 'true') return;
+  albumPhotos.forEach((photo, index) => {
+    const card = document.createElement('button');
+    card.type = 'button';
+    card.className = 'album-card';
+    card.style.setProperty('--delay', (index * 65) + 'ms');
+    card.setAttribute('aria-label', 'Open photo: ' + photo.caption);
+    const img = document.createElement('img');
+    img.src = photo.src; img.alt = photo.caption; img.loading = index < 6 ? 'eager' : 'lazy';
+    const caption = document.createElement('span');
+    caption.className = 'album-caption'; caption.textContent = photo.caption;
+    card.append(img, caption);
+    card.addEventListener('click', () => openPhotoViewer(index));
+    grid.appendChild(card);
+  });
+  grid.dataset.built = 'true';
+}
+
+function openPhotoViewer(i) { activePhotoIndex = i; updatePhotoViewer(); document.getElementById('photoViewer').classList.add('open'); document.body.style.overflow = 'hidden'; }
+function updatePhotoViewer() { const p = albumPhotos[activePhotoIndex]; document.getElementById('viewerImage').src = p.src; document.getElementById('viewerCaption').textContent = p.caption; }
+function changePhoto(d, e) { if (e) e.stopPropagation(); activePhotoIndex = (activePhotoIndex + d + albumPhotos.length) % albumPhotos.length; updatePhotoViewer(); }
+function closePhotoViewer(e) { if (e && e.target !== e.currentTarget) return; document.getElementById('photoViewer').classList.remove('open'); document.body.style.overflow = ''; }
+
+document.addEventListener('keydown', e => {
+  const v = document.getElementById('photoViewer');
+  if (!v || !v.classList.contains('open')) return;
+  if (e.key === 'Escape') closePhotoViewer();
+  if (e.key === 'ArrowRight') changePhoto(1);
+  if (e.key === 'ArrowLeft') changePhoto(-1);
+});
+
+/* BACKGROUND MUSIC: put your MP3 at music/your-song.mp3 */
+async function toggleMusic() {
+  const audio = document.getElementById('bgMusic'), button = document.getElementById('musicBtn');
+  if (audio.paused) {
+    try { await audio.play(); button.textContent = '♫ pause music'; }
+    catch (err) { button.textContent = 'music unavailable'; alert('Add your MP3 file to the music folder and name it your-song.mp3.'); }
+  } else { audio.pause(); button.textContent = '♫ play music'; }
+}
+</script>
+</body>
+</html>
